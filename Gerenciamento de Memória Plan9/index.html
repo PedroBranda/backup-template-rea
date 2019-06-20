@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>REA | Pedro Henrique Brandalise da Silva</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/bunny.png" type="image/png">
+		<link rel="shortcut icon" href="images/bunny.ico" type="img/x-icon">
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="images/foto.jpg" alt="" /></span>
+					<h1 id="logo"><a href="https://www.facebook.com/pedrohenrique.brandalisedasilva.3" target="_blank">Pedro Henrique Brandalise da Silva</a></h1>
+					<p>Aluno do curso de Engenharia de Computação, Universidade Estadual de Ponta Grossa</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#one" class="active">O que é o Plan 9 ?</a></li>
+						<li><a href="#two">Lançamentos</a></li>
+						<li><a href="#three">Status atual do sistema</a></li>
+						<li><a href="#four">Gerenciamento de memória</a></li>
+						<li><a href="#five">Referências</a></li>
+						<li><a href="#six">Contato</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/pedrohenrique.brandalisedasilva.3" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="mailto:pedrohbspg@gmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="image main" data-position="center">
+									<img src="images/topo.png" alt="" />
+								</div>
+								<div class="container">
+									<header class="major">
+										<h2>O que é o Plan 9 ?</h2>
+									</header>
+									<p>	É um sistema operacional desenvolvido pela Bell Labs desenvolvido a partir do final dos anos 80, seus autores e designers originais foram Dave Presotto, Ken Thompson,  Rob Pike, Phill Winterbottom, com a sequência do desenvolvimento vários outros se juntaram ao projeto ao longo dos anos 90 até o presente.
+										O sistema operacional é baseado em Unix, porém nele cada processo possui seu próprio espaço de nome mutável, isso significa que, um processo pode: adicionar, remover e reorganizar seu próprio espaço de nome sem afetar os espaços de processos não relacionados. 
+										O Plan9 é um kernel do sistema operacional, mas também é uma coleção de software (operações), a maior parte do software é nova, escrita para o plan9, ou seja, poucas coisas foram importadas do Unix ou de outros sistemas operacionais. Dentre esses programas estão as janelas do sistema, compiladores, servidor de arquivos e os serviços de rede.</p>
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two">
+								<div class="container">
+									<h3>Lançamentos</h3>
+									<p>	Sua primeira edição foi lançada em 1992, disponibilizada apenas para universidade. A segunda edição foi lançada em 1995, na época a equipe do Plan9 estava trabalhando na implementação de um sistema chamado Brasil, em 1999 um ano antes da estreia da terceira edição o nome Brasil foi alterado para “Plano 9”. A terceira edição foi lançada nos anos 2000 e distribuída gratuitamente pela internet. E por fim sua quarta edição foi lançada em 2002, com essa edição também foi introduzido um novo mecanismo de atualização para o sistema.</p>
+								</div>
+							</section>
+
+						<!-- Three -->
+							<section id="three">
+								<div class="container">
+									<h3>Status atual do sistema</h3>
+									<p>	O Plan9 continua a mudar diariamente, e essas mudanças são distribuídas através do site <a href="https://9p.io/plan9/" target="_blank">"9p.io"</a>, apesar das mudanças foi optado por manter seu visual fiel à sua versão original. Ele também é utilizado por outros sistemas operacionais como ideia base, por ter sido o primeiro a dar suporte completo à codificação do conjunto de caracteres Unicode UTF-08. Como exemplo o protocolo de arquivo simples 9P foi implementado nas versões atuais do Linux.
+										Muitas empresas obtiveram sucesso na venda de produtos baseados no Plan9, dentre estas a mais notável é a <a href="http://www.vitanuova.com/" target="_blank">"Vita Nuova"</a>, criadora do sistema operacional Inferno, um derivado do Plan9 voltado para dispositivos embarcados.</p>
+								</div>
+							</section>
+
+						<!-- Four -->
+							<section id="four">
+								<div class="container">
+									<h3>Como funciona o gerenciamento de memória do Plan 9 ?</h3>
+									<p>Antes de discutir sobre as chamadas de sistema como newseg, segbrk, segattach, segdeattach, segfree e segflush, vamos entender como funciona o gerenciamento de memória em si do Plan9. O Plan9 utiliza memória virtual paginada, onde o kernel usa a paginação em um esquema de dois leveis, onde cada processo tem seu próprio espaço virtual separado em duas regiões, uma para o próprio kernel e outra para o usuário. A parte destinada ao usuário é situada de 0gb a 2gb, já a parte do kernel é situada entre 2gb a 4gb.</p>
+										<div align="center"><img src="images/paginaUser.jpg" alt="" title="Exemplo de página visível ao usuário" width="50%" length="50%"/></div>
+										<p align="center">Figura 1: Exemplo de página visível ao usuário.</p>
+										<p>Agora vamos ver o que fazem as chamadas de sistemas básicas no gerenciamento de memória:</p>
+										<p>newseg() - cria um novo segmento de um tipo informado, base e tamanho, o procedimento é abortado caso o tamanho exceda o tamanho máximo permitido para um segmento de memória.</p>
+										<p>segbrk() - redimensiona um segmento, apenas segmentos compartilhados, BSS (better save space) e shared data podem ser redimensionados, segue a premissa de que o local menos usado do segmento de memória é utilizado para fazer o redimensionamento de dado bloco.</p>
+										<p>segattach() - cria um novo segmento e adiciona o mesmo ao processo que chamou o procedimento, o retorno é a parte mais baixa do endereço, ou seja, o endereço do início desse novo segmento criado.</p>
+										<p>segdeattach() - é a função oposta do segattach(), faz a remoção de um segmento adicionado a um processo pai.</p>
+										<p>segfree() - libera uma parte do segmento alocado.</p>
+										<p>segflush() - invalida qualquer cache de instrução e escreve novamente qualquer cache de data associada as páginas contidas no segmento, por subsequência todas as novas páginas serão também atualizadas quando forem referenciadas.</p>
+										<p>Vale lembrar que existem várias outras chamadas de sistema para fazer o gerenciamento de memória, acima foram citadas as mais básicas e primordiais se assim podemos dizer.</p>
+										<p align="center">Caso queira baixar o código fonte do Plan9 clique neste <a href="https://9p.io/sources/plan9/" target="_blank">link</a>.</p>
+										<p align="center">Caso queira baixar a distribuição do Plan9 para instalar clique neste <a href="https://9p.io/plan9/download.html" target="_blank">link</a>.</p>
+									<div class="features">
+									</div>
+								</div>
+							</section>
+
+						<!-- Five -->
+							<section id="five">
+								<div class="container">
+									<h3>Referências</h3>
+									<p><a href="http://lsub.org/who/nemo/9.pdf" target="_blank">Notes on the Plan 9tm 3rd edition Kernel Source</a>.</p>
+									<p><a href="https://9p.io/plan9/about.html" target="_blank">Plan9 from Bell Labs Overview</a></p>
+									<p><a href="https://www.dipmat.univpm.it/~demeio/public/the_c_programming_language_2.pdf" target="_blank">The C Programming Language (Second Edition)</a></p>
+									<p><a href="http://man.cat-v.org/plan_9/" target="_blank">Manual Plan9</a></p>
+
+								</div>
+							</section>
+
+						<!-- six -->
+							<section id="six">
+								<div class="container">
+									<h3>Entre em contato comigo</h3>
+									<p>Caso fique alguma dúvida ou dica sobre este REA, envie-me um e-mail.</p>
+									<p>Clique no ícone de e-mail posicionado na parte inferior a direita da página para ser redirecionado para o envio do e-mail.</p>
+								</div>
+							</section>
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Feito por Pedro Henrique Brandalise da Silva</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
